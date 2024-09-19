@@ -1,8 +1,11 @@
-const Notification = ({ style, message }) => {
-  if (message === null || style === null) {
+import { useSelector } from "react-redux"
+
+const Notification = () => {
+  const notification = useSelector(state => state.notification)
+  if (notification.style === null || notification.text === null) {
     return null;
   }
-  return <div className={style}>{message}</div>;
+  return <div className={notification.style}>{notification.text}</div>;
 };
 
 export default Notification;

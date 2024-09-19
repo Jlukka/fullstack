@@ -2,6 +2,9 @@ import Blog from "./Blog";
 import Togglable from "./Togglable";
 import CreateForm from "./CreateForm";
 
+import { useSelector } from "react-redux"
+
+
 const BlogView = ({
   user,
   handleLogout,
@@ -9,11 +12,12 @@ const BlogView = ({
   deleteBlog,
   handlePost,
   blogFormRef,
-  blogs,
 }) => {
   const compareByLikes = (a, b) => {
     return b.likes - a.likes;
   };
+
+  const blogs = [...useSelector(state => state.blogs)]
 
   return (
     <div>
